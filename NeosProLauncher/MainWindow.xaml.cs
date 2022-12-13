@@ -482,6 +482,7 @@ namespace NeosProLauncher
             await Install_Patch_SRAnipal();
             await Install_Patch_msdfgen();
             await Install_Patch_bindings();
+            await Install_Patch_ytdlp();
             ProgressBar.Value = 0.0;
             ProgressBar.IsIndeterminate = false;
             ProgressBar.Visibility = Visibility.Hidden;
@@ -564,6 +565,22 @@ namespace NeosProLauncher
             ZipFile.ExtractToDirectory("SRAnipalSDK.zip", "Extract");
 
             Directory.Move("Extract/SDK/01_C/bin/",APP_PATH + "/Neos_Data/Plugins/x86_64/");
+            MessageBox.Show("Patched successfully!");
+        }
+        private async Task Install_Patch_ytdlp()
+        {
+            StatusText.Content = "Installing patch (yt-dlp)...";
+            try
+            {
+                WebClient client = new WebClient();
+                client.DownloadProgressChanged += Client_DownloadProgressChanged;
+                await client.DownloadFileTaskAsync("https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe", APP_PATH + "/RuntimeData/yt-dlp.exe");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Patchfile seems missing, abort...");
+            }
+
             MessageBox.Show("Patched successfully!");
         }
 
