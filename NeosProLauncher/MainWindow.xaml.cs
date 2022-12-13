@@ -570,11 +570,15 @@ namespace NeosProLauncher
         private async Task Install_Patch_ytdlp()
         {
             StatusText.Content = "Installing patch (yt-dlp)...";
+            string FileName = AppDomain.CurrentDomain.BaseDirectory + APP_PATH + "/RuntimeData/yt-dlp.exe";
             try
             {
-                WebClient client = new WebClient();
-                client.DownloadProgressChanged += Client_DownloadProgressChanged;
-                await client.DownloadFileTaskAsync("https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe", APP_PATH + "/RuntimeData/yt-dlp.exe");
+                await Process.Start(new ProcessStartInfo
+                {
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    FileName = FileName,
+                    Arguments = "-U"
+                }).WaitForExitAsync(default(CancellationToken));
             }
             catch (Exception)
             {
