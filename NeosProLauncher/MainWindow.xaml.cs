@@ -562,9 +562,9 @@ namespace NeosProLauncher
             StatusText.Content = "Installing patch (SRAnipalSDK)...";
 
             //動かない
-            ZipFile.ExtractToDirectory("SRAnipalSDK.zip", "Extract");
+            //ZipFile.ExtractToDirectory("SRAnipalSDK.zip", "Extract");
 
-            Directory.Move("Extract/SDK/01_C/bin/",APP_PATH + "/Neos_Data/Plugins/x86_64/");
+            //Directory.Move("Extract/SDK/01_C/bin/",APP_PATH + "/Neos_Data/Plugins/x86_64/");
             MessageBox.Show("Patched successfully!");
         }
         private async Task Install_Patch_ytdlp()
