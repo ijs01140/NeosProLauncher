@@ -553,7 +553,7 @@ namespace NeosProLauncher
             {
                 WebClient client = new WebClient();
                 client.DownloadProgressChanged += Client_DownloadProgressChanged;
-                await client.DownloadFileTaskAsync("https://dl.vive.com/SDK/vivesense/SRanipal/SDK-v1.3.6.6.zip", "SRAnipalSDK.zip");
+                await client.DownloadFileTaskAsync("https://dl.vive.com/SDK/vivesense/SRanipal/SDK-v1.3.6.8.zip", "SRAnipalSDK.zip");
             }
             catch (Exception)
             {
